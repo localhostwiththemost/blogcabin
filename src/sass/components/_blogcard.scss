@@ -1,0 +1,48 @@
+.blogcard {
+  border: 1px solid #cfd2e2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem 5rem 1rem 10px;
+  width: 20rem;
+  background-color: #f4f4f4;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cfd2e2;
+  }
+
+  &__img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 10px;
+  }
+
+&__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+  &__author-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: #000;
+  }
+
+&__by {
+    color: #000;
+    font-size: 1.6rem;
+}
+
+&__author {
+    color: #000;
+    font-size: 1.6rem;
+}
+}

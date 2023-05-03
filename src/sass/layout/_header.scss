@@ -1,0 +1,42 @@
+header {
+  background-image: url("src/images/hero.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
+}
+
+.header-content {
+  position: relative;
+  top: 40%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  background-color: $color-mandarin-orange;
+  background-image: linear-gradient(to bottom, $color-mandarin-orange, #f46024);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-family: "DM Serif Display", serif;
+  font-size: 7rem;
+  font-weight: 500;
+}
+
+.header-description {
+  color: $color-main-white;
+  font-family: "Quattrocento", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}

@@ -1,0 +1,37 @@
+.btn-main {
+  border: none;
+  border-radius: 3rem;
+  font-family: "Quattrocento", serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #000;
+  white-space: nowrap;
+  padding: 1rem 2rem 1rem 2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #cfd2e2;
+  }
+}
+
+// AUTH GOOGLE BUTTON
+.google-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: $color-google-blue;
+  color: #fff;
+  font-family: "Roboto", arial, sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.21px;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.google-icon {
+  background-color: #fff;
+  height: 2.5rem;
+  width: 2.5rem;
+}
