@@ -1,0 +1,77 @@
+.compose-page {
+  background-image: linear-gradient(45deg, $color-deep-green, #041e11);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.compose-form {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 2rem;
+    color: $color-main-white;
+    margin-bottom: 2px;
+  }
+
+  &__btn {
+    font-family: "Quattrocento", serif;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 2rem;
+    width: 20%;
+    padding: 1rem;
+    align-self: center;
+    margin-top: 2rem
+  }
+}
+
+.blog-title {
+  margin-bottom: 1rem;
+}
+
+#blog-title {
+  background-color: $color-main-white;
+  color: #000;
+  font-family: "Quattrocento", serif;
+  font-size: 2rem;
+  border: none;
+  border-radius: 2rem;
+  -webkit-padding-start: 1rem;
+  padding-inline-start: 1rem;
+  -webkit-padding-end: 1rem;
+  padding-inline-end: 1rem;
+  outline: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  &::placeholder {
+    font-family: "Quattrocento", serif;
+  }
+}
+
+.blog-text {
+  resize: none;
+  background-color: $color-main-white;
+  color: #000;
+  font-family: "Quattrocento", serif;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 2rem;
+  -webkit-padding-start: 1rem;
+  padding-inline-start: 1rem;
+  -webkit-padding-end: 1rem;
+  padding-inline-end: 1rem;
+  outline: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  &::placeholder {
+    font-family: "Quattrocento", serif;
+  }
+}

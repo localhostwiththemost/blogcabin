@@ -156,7 +156,7 @@ nav {
   flex-direction: row;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1.8rem;
   -webkit-backdrop-filter: saturate(180%) blur(2rem);
   backdrop-filter: saturate(180%) blur(2rem);
@@ -164,11 +164,30 @@ nav {
   z-index: 8000;
 }
 
+ion-icon {
+  font-size: 24px;
+  color: #f49424;
+  cursor: pointer;
+}
+ion-icon:hover {
+  color: #eee9e6;
+}
+
 .nav-ul {
   list-style: none;
 }
 
 .nav-link {
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #eee9e6 !important;
+}
+.nav-link:visited {
+  color: #f49424;
+}
+
+.nav-link--item {
   display: inline-block;
   margin-left: 3rem;
   color: #f49424;
@@ -179,10 +198,10 @@ nav {
   padding: 0 10px;
   cursor: pointer;
 }
-.nav-link:first-child {
+.nav-link--item:first-child {
   margin-left: 0;
 }
-.nav-link:hover {
+.nav-link--item:hover {
   color: #eee9e6;
 }
 
@@ -255,6 +274,80 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.compose-page {
+  background-image: linear-gradient(45deg, #0b4a2a, #041e11);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.compose-form {
+  display: flex;
+  flex-direction: column;
+}
+.compose-form__label {
+  font-size: 2rem;
+  color: #eee9e6;
+  margin-bottom: 2px;
+}
+.compose-form__btn {
+  font-family: "Quattrocento", serif;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 2rem;
+  width: 20%;
+  padding: 1rem;
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.blog-title {
+  margin-bottom: 1rem;
+}
+
+#blog-title {
+  background-color: #eee9e6;
+  color: #000;
+  font-family: "Quattrocento", serif;
+  font-size: 2rem;
+  border: none;
+  border-radius: 2rem;
+  -webkit-padding-start: 1rem;
+  padding-inline-start: 1rem;
+  -webkit-padding-end: 1rem;
+  padding-inline-end: 1rem;
+  outline: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#blog-title::placeholder {
+  font-family: "Quattrocento", serif;
+}
+
+.blog-text {
+  resize: none;
+  background-color: #eee9e6;
+  color: #000;
+  font-family: "Quattrocento", serif;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 2rem;
+  -webkit-padding-start: 1rem;
+  padding-inline-start: 1rem;
+  -webkit-padding-end: 1rem;
+  padding-inline-end: 1rem;
+  outline: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.blog-text::placeholder {
+  font-family: "Quattrocento", serif;
 }
 
 /*# sourceMappingURL=main.css.map */

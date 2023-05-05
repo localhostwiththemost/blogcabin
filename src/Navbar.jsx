@@ -1,5 +1,6 @@
 import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 function Navbar({ handleSignInClick, loggedIn }) {
   const logOut = async () => {
@@ -12,10 +13,22 @@ function Navbar({ handleSignInClick, loggedIn }) {
 
   return (
     <nav>
+      <Link to="/">
+        <ion-icon name="home" className="home-icon"></ion-icon>
+      </Link>
+
       <ul className="nav-ul">
-        <li className="nav-link">Our Story</li>
-        {loggedIn ? <li className="nav-link">Compose</li> : ""}
-        <li className="nav-link">
+        <li className="nav-link--item">Our Story</li>
+        {loggedIn ? (
+          <li className="nav-link--item">
+            <Link to="/compose" className="nav-link">
+              Compose
+            </Link>
+          </li>
+        ) : (
+          ""
+        )}
+        <li className="nav-link--item">
           {!loggedIn ? (
             <button onClick={handleSignInClick}>Sign In</button>
           ) : (

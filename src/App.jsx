@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
+import ComposeBlog from "./ComposeBlog";
 import { Auth } from "./Auth";
 import { auth, googleProvider } from "./firebase";
 
@@ -28,10 +29,18 @@ function App() {
         <Route
           path="/"
           element={
-            <HomePage loggedIn={loggedIn} setShowOverlay={setShowOverlay} showOverlay={showOverlay} />
+            <HomePage
+              loggedIn={loggedIn}
+              setShowOverlay={setShowOverlay}
+              showOverlay={showOverlay}
+            />
           }
         />
-        <Route path="/login" element={<Auth setLoggedIn={setLoggedIn} showOverlay={showOverlay} />} />
+        <Route path="/compose" element={<ComposeBlog loggedIn={loggedIn} />} />
+        <Route
+          path="/login"
+          element={<Auth setLoggedIn={setLoggedIn} showOverlay={showOverlay} />}
+        />
       </Routes>
     </>
   );
