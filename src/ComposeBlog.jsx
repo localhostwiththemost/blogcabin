@@ -7,6 +7,7 @@ function ComposeBlog({ loggedIn }) {
   const [user, setUser] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -30,6 +31,20 @@ function ComposeBlog({ loggedIn }) {
     return firstName;
   }
 
+  function convertImageToDesiredFormat(image) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const convertedImage = reader.result;
+        resolve(convertedImage);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      reader.readAsDataURL(image);
+    });
+  }
+
   // Update the title state variable when the input value changes
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -40,10 +55,22 @@ function ComposeBlog({ loggedIn }) {
     setContent(e.target.value);
   };
 
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+  };
+
   // todo
   const handleSubmit = async (e) => {
     e.preventDefault();
     let blogData = { user: { displayName: user.displayName }, title, content };
+
+    if (image) {
+      // Convert the image to the desired format (e.g., base64) and add it to the blogData object
+      const convertedImage = await convertImageToDesiredFormat(image);
+      blogData.image = convertedImage;
+    }
+
     addBlog(db, blogData);
 
     setTitle("");
@@ -78,7 +105,7 @@ function ComposeBlog({ loggedIn }) {
             onChange={handleTitleChange}
           />
           <label htmlFor="blog-text" className="compose-form__label">
-            Compose your article
+            Body
           </label>
           <textarea
             name=""
@@ -91,7 +118,11 @@ function ComposeBlog({ loggedIn }) {
             onChange={handleContentChange}
           ></textarea>
 
-          <input type="file" className="img-input" />
+          <input
+            type="file"
+            className="img-input"
+            onChange={handleImageChange}
+          />
           <button className="compose-form__btn">Post</button>
         </form>
       </section>
