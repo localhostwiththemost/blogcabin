@@ -37,9 +37,6 @@ function App() {
               loggedIn={loggedIn}
               setShowOverlay={setShowOverlay}
               showOverlay={showOverlay}
-              title={title}
-              user={user}
-              image={image}
             />
           }
         />

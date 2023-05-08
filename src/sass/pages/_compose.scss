@@ -85,5 +85,12 @@
 }
 
 .img-input {
+  align-self: center;
+
+  &__label {
     align-self: center;
+    margin-bottom: 1rem;
+    color: $color-mandarin-orange;
+    font-size: 1.6rem;
+  }
 }

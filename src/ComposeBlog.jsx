@@ -108,6 +108,8 @@ function ComposeBlog({
             placeholder="Summarize your blog post"
             value={title}
             onChange={handleTitleChange}
+            maxLength="50"
+            required
           />
           <label htmlFor="blog-text" className="compose-form__label">
             Body
@@ -121,11 +123,14 @@ function ComposeBlog({
             placeholder="Offer your unique perspective on a subject"
             value={content}
             onChange={handleContentChange}
+            required
           ></textarea>
 
+          <label htmlFor="img-input" className="img-input__label">(Optional) Choose an image for your article</label>
           <input
             type="file"
             className="img-input"
+            id="img-input"
             onChange={handleImageChange}
           />
           <button className="compose-form__btn">Post</button>

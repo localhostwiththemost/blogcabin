@@ -1,14 +1,7 @@
 import Header from "./Header";
 import Content from "./Content";
 
-function HomePage({
-  loggedIn,
-  setShowOverlay,
-  showOverlay,
-  title,
-  user,
-  image,
-}) {
+function HomePage({ loggedIn, setShowOverlay, showOverlay }) {
   return (
     <>
       <Header
@@ -16,7 +9,7 @@ function HomePage({
         setShowOverlay={setShowOverlay}
         showOverlay={showOverlay}
       />
-      <Content title={title} content={user} image={image} />
+      <Content />
     </>
   );
 }

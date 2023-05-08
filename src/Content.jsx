@@ -3,7 +3,7 @@ import { db } from "./firebase";
 import { getDocs, collection } from "firebase/firestore";
 import BlogCard from "./BlogCard";
 
-function Content({ title, user, image }) {
+function Content() {
   const [blogData, setBlogData] = useState([]);
   const blogCollectionRef = collection(db, "blogCollection");
 
