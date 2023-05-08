@@ -8,6 +8,10 @@ import { auth, googleProvider } from "./firebase";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [user, setUser] = useState(null);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -33,10 +37,28 @@ function App() {
               loggedIn={loggedIn}
               setShowOverlay={setShowOverlay}
               showOverlay={showOverlay}
+              title={title}
+              user={user}
+              image={image}
             />
           }
         />
-        <Route path="/compose" element={<ComposeBlog loggedIn={loggedIn} />} />
+        <Route
+          path="/compose"
+          element={
+            <ComposeBlog
+              loggedIn={loggedIn}
+              user={user}
+              setUser={setUser}
+              title={title}
+              setTitle={setTitle}
+              content={content}
+              setContent={setContent}
+              image={image}
+              setImage={setImage}
+            />
+          }
+        />
         <Route
           path="/login"
           element={<Auth setLoggedIn={setLoggedIn} showOverlay={showOverlay} />}

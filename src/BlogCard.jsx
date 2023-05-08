@@ -1,15 +1,15 @@
-function BlogCard() {
+function BlogCard({ title, author, image }) {
   return (
     <>
       <div className="blogcard">
-        <img src="src/images/hero.jpg" alt="" className="blogcard__img" />
+        <img src={image ? image : "https://via.placeholder.com/400"} alt="" className="blogcard__img" />
 
         <div className="blogcard__text-container">
-          <h3 className="blogcard__title">Java</h3>
+          <h3 className="blogcard__title">{title}</h3>
 
           <div className="blogcard__author-container">
             <span className="blogcard__by">By</span>
-            <h4 className="blogcard__author">Author</h4>
+            <h4 className="blogcard__author">{author}</h4>
           </div>
         </div>
       </div>

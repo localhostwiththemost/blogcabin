@@ -3,12 +3,17 @@ import Navbar from "./Navbar";
 import { auth, db } from "./firebase";
 import { addBlog } from "./blogCollection";
 
-function ComposeBlog({ loggedIn }) {
-  const [user, setUser] = useState(null);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
-
+function ComposeBlog({
+  loggedIn,
+  user,
+  setUser,
+  title,
+  setTitle,
+  content,
+  setContent,
+  image,
+  setImage,
+}) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
