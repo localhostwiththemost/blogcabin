@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import ComposeBlog from "./ComposeBlog";
+import Blog from "./Blog";
 import { Auth } from "./Auth";
 import { auth, googleProvider } from "./firebase";
 
@@ -56,6 +57,9 @@ function App() {
             />
           }
         />
+        
+        <Route path="/blog/:blogId" element={<Blog loggedIn={loggedIn} />} />
+
         <Route
           path="/login"
           element={<Auth setLoggedIn={setLoggedIn} showOverlay={showOverlay} />}

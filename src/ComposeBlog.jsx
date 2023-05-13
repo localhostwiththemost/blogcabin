@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { auth, db } from "./firebase";
 import { addBlog } from "./blogCollection";
@@ -65,7 +65,6 @@ function ComposeBlog({
     setImage(selectedImage);
   };
 
-  // todo
   const handleSubmit = async (e) => {
     e.preventDefault();
     let blogData = { user: { displayName: user.displayName }, title, content };

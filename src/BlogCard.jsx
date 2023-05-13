@@ -1,7 +1,7 @@
-function BlogCard({ title, author, image }) {
+function BlogCard({ title, author, image, onClick }) {
   return (
     <>
-      <div className="blogcard">
+      <div className="blogcard" onClick={onClick}>
         <img src={image ? image : "https://via.placeholder.com/400"} alt="" className="blogcard__img" />
 
         <div className="blogcard__text-container">

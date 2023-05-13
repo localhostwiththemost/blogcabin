@@ -9,7 +9,7 @@ function HomePage({ loggedIn, setShowOverlay, showOverlay }) {
         setShowOverlay={setShowOverlay}
         showOverlay={showOverlay}
       />
-      <Content />
+      <Content loggedIn={loggedIn} />
     </>
   );
 }
