@@ -2,7 +2,7 @@ function BlogCard({ title, author, image, onClick }) {
   return (
     <>
       <div className="blogcard" onClick={onClick}>
-        <img src={image ? image : "https://via.placeholder.com/400"} alt="" className="blogcard__img" />
+        <img src={image ? image : "https://placebear.com/250/250"} alt="" className="blogcard__img" />
 
         <div className="blogcard__text-container">
           <h3 className="blogcard__title">{title}</h3>

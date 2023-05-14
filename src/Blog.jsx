@@ -4,7 +4,7 @@ import { db } from "./firebase";
 import { getDocs, collection, doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
-function Blog({loggedIn}) {
+function Blog({ loggedIn }) {
   const { blogId } = useParams(); // Get the blogId from the URL
   const [blogData, setBlogData] = useState(null);
   const blogCollectionRef = collection(db, "blogCollection");
@@ -35,11 +35,32 @@ function Blog({loggedIn}) {
   return (
     <>
       <Navbar loggedIn={loggedIn} />
-      <div className="blogData-container">
-        <h1>{blogData.title}</h1>
-        <p>{blogData.author}</p>
-        <img src={blogData.image} alt="Blog" />
-        <p>{blogData.content}</p>
+      <div className="blog-page">
+        <div className="blogData-container">
+          <h1 className="blog-title__heading">{blogData.title}</h1>
+
+          <div className="blog-author__container">
+            <img
+              src={blogData.user.userImg}
+              alt={`A photo of ${blogData.user.displayName}`}
+              className="author-img"
+            />
+            <p className="author-name">{blogData.user.displayName}</p>
+          </div>
+
+          <img
+            src={
+              blogData.image ? blogData.image : "https://placebear.com/400/400"
+            }
+            alt={blogData.title}
+            className="blog-img"
+          />
+         
+         <div className="blogData-body__container">
+          <p className="blogData-body">{blogData.content}</p>
+
+         </div>
+        </div>
       </div>
     </>
   );

@@ -276,12 +276,56 @@ header {
   align-items: center;
 }
 
+.blog-page {
+  background-image: linear-gradient(45deg, #0b4a2a, #041e11);
+  min-height: 100vh;
+  padding-top: 200px;
+}
+
 .blogData-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 10rem;
+  gap: 1rem;
+  background-color: #eee9e6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 3rem;
+}
+
+.blog-title__heading {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.blog-author__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.author-img {
+  border-radius: 50px;
+  height: 3rem;
+  width: 3rem;
+}
+
+.author-name {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.blog-img {
+  border-radius: 3rem;
+}
+
+.blogData-body {
+  font-size: 1.6rem;
+}
+.blogData-body__container {
+  display: flex;
+  align-items: flex-start;
 }
 
 .compose-page {

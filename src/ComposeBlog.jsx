@@ -67,7 +67,19 @@ function ComposeBlog({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let blogData = { user: { displayName: user.displayName }, title, content };
+
+
+    // TODO: add ui error telling user character limit
+    if (content.length < 100) {
+      console.log("not enough words idiot");
+      return;
+    }
+
+    let blogData = {
+      user: { displayName: user.displayName, userImg: user.photoURL },
+      title,
+      content,
+    };
 
     if (image) {
       // Convert the image to the desired format (e.g., base64) and add it to the blogData object
@@ -125,7 +137,9 @@ function ComposeBlog({
             required
           ></textarea>
 
-          <label htmlFor="img-input" className="img-input__label">(Optional) Choose an image for your article</label>
+          <label htmlFor="img-input" className="img-input__label">
+            (Optional) Choose an image for your article
+          </label>
           <input
             type="file"
             className="img-input"
