@@ -38,15 +38,34 @@
   font-weight: 500;
 }
 
+.like-comment__container {
+    width: 100%;
+    display: flex;
+    gap: .5rem;
+    border-top: solid 1px #d3d3d3;
+    padding: 5px;
+ 
+    & ion-icon {
+    color: $color-deep-green;
+    cursor: pointer;
+  }
+}
+
 .blog-img {
   border-radius: 3rem;
 }
 
 .blogData-body {
   font-size: 1.6rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  padding: 10px;
 
   &__container {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 }
