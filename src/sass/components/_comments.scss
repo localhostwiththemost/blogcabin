@@ -1,0 +1,14 @@
+.comment-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: $color-main-white;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 3rem;
+  margin-top: 1rem;
+}
+
+

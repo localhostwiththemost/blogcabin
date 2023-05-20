@@ -4,9 +4,18 @@ import { db } from "./firebase";
 import { getDocs, collection, doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
-function Blog({ loggedIn }) {
+function Blog({ loggedIn, user, uid }) {
   const { blogId } = useParams(); // Get the blogId from the URL
   const [blogData, setBlogData] = useState(null);
+  const [liked, setLiked] = useState(() => {
+    const storedLiked = localStorage.getItem(`blog-${blogId}-liked`);
+    return storedLiked ? JSON.parse(storedLiked) : { isLiked: false };
+  });
+  //const [numberOfLikes, setNumberOfLikes] = useState(0);
+  const [numberOfLikes, setNumberOfLikes] = useState(() => {
+    const storedLikes = localStorage.getItem(`blog-${blogId}-likes`);
+    return storedLikes ? parseInt(storedLikes) : 0;
+  });
   const blogCollectionRef = collection(db, "blogCollection");
   const blogDocRef = doc(blogCollectionRef, blogId);
 
@@ -28,6 +37,45 @@ function Blog({ loggedIn }) {
     getBlogData();
   }, [blogDocRef]);
 
+  const handleLikeClick = () => {
+    setLiked((prevLiked) => {
+      const newLiked = { ...prevLiked, isLiked: !prevLiked.isLiked };
+      // Update the class of the like container based on the new liked state
+      const likeContainer = document.getElementById(`like-container-${blogId}`);
+      if (likeContainer) {
+        likeContainer.classList.toggle("liked");
+      }
+
+      return newLiked;
+    });
+
+    setNumberOfLikes((prevNumberOfLikes) => {
+      if (!liked.isLiked) {
+        return prevNumberOfLikes + 1;
+      } else {
+        return prevNumberOfLikes > 0 ? prevNumberOfLikes - 1 : 0;
+      }
+    });
+  };
+
+  // Retrieve liked state from local storage during initialization
+  useEffect(() => {
+    const likedState = localStorage.getItem(`blog-${blogId}-liked`);
+    if (likedState !== null) {
+      setLiked(JSON.parse(likedState));
+    }
+  }, [blogId]);
+
+  // Save updated liked state to local storage when the user clicks the thumbs-up icon
+  useEffect(() => {
+    localStorage.setItem(`blog-${blogId}-liked`, JSON.stringify(liked));
+  }, [blogId, liked]);
+
+  // Save number of likes to local storage when it changes
+  useEffect(() => {
+    localStorage.setItem(`blog-${blogId}-likes`, numberOfLikes.toString());
+  }, [blogId, numberOfLikes]);
+
   if (!blogData) {
     return <p>Loading...</p>;
   }
@@ -48,10 +96,26 @@ function Blog({ loggedIn }) {
             <p className="author-name">{blogData.user.displayName}</p>
           </div>
 
-          <div className="like-comment__container">
-            <ion-icon name="thumbs-up-sharp"></ion-icon>
-            <ion-icon name="chatbubble"></ion-icon>
-          </div>
+          {loggedIn ? (
+            <div className="like-comment__container">
+              <div
+                id={`like-container-${blogId}`}
+                className={
+                  liked.isLiked ? "like-container liked" : "liked-container"
+                }
+                onClick={handleLikeClick}
+              >
+                <ion-icon name="thumbs-up-sharp"></ion-icon>
+                <span>{numberOfLikes}</span>
+              </div>
+              <ion-icon name="chatbubble"></ion-icon>
+            </div>
+          ) : (
+            <div className="like-comment__container">
+              <ion-icon name="thumbs-up-sharp"></ion-icon>
+              <ion-icon name="chatbubble"></ion-icon>
+            </div>
+          )}
 
           <img
             src={
@@ -69,7 +133,7 @@ function Blog({ loggedIn }) {
         {loggedIn ? (
           <div className="comment-container">
             <form action="">
-              <input type="text" name="" id="" />
+              <input type="text" name="" id="" placeholder="Add a comment" />
             </form>
           </div>
         ) : (

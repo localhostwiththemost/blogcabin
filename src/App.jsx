@@ -10,6 +10,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [user, setUser] = useState(null);
+  const [uid, setUid] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
@@ -21,8 +22,10 @@ function App() {
         user.providerData[0].providerId === googleProvider.providerId
       ) {
         setLoggedIn(true);
+        setUid(user.uid);
       } else {
         setLoggedIn(false);
+        setUid(null);
       }
     });
     return unsubscribe;
@@ -57,8 +60,11 @@ function App() {
             />
           }
         />
-        
-        <Route path="/blog/:blogId" element={<Blog loggedIn={loggedIn} />} />
+
+        <Route
+          path="/blog/:blogId"
+          element={<Blog loggedIn={loggedIn} user={user} uid={uid} />}
+        />
 
         <Route
           path="/login"

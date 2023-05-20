@@ -141,6 +141,19 @@ body {
   width: 2.5rem;
 }
 
+.comment-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #eee9e6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 3rem;
+  margin-top: 1rem;
+}
+
 nav {
   position: -webkit-sticky;
   position: fixed;
@@ -326,6 +339,10 @@ header {
 .like-comment__container ion-icon {
   color: #0b4a2a;
   cursor: pointer;
+}
+
+.like-comment__container .liked ion-icon {
+  color: #f49424;
 }
 
 .blog-img {
